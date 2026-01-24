@@ -1,0 +1,1395 @@
+<html>
+
+<head>
+    <title>youtube</title>
+    <style class="text/css">
+        body {
+            margin: 0;
+
+        }
+
+        .layout {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 0px 16px;
+            font-family: "Roboto", "Arial", sans-serif;
+        }
+
+        .top {
+            width: 100%;
+            display: flex;
+            padding: 0px;
+            position: fixed;
+            background: white;
+        }
+
+        .menu {
+            margin-top: 16px;
+            margin-left: 8px;
+        }
+
+        .logo {
+            margin-left: 24px;
+            margin-top: 18px;
+        }
+
+        .search-box {
+            display: flex;
+            width: 560px;
+            height: 40px;
+            margin-left: 278px;
+            margin-top: 8px;
+        }
+
+        .search-box input {
+
+            background: #fff;
+            border: 1px solid #303030;
+            border-right: none;
+            border-radius: 20px 0 0 20px;
+            padding: 0 16px;
+            font-size: 16px;
+            outline: none;
+            width: 500px;
+        }
+
+        .search-box input::placeholder {
+            color: #aaa;
+        }
+
+        .search-box input:focus {
+            border-color: #1c62b9;
+        }
+
+        .search-box span {
+            display: flex;
+        }
+
+        .search-box button {
+            width: 64px;
+            background: #f8f8f8;
+            border: 1px solid #303030;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box button:hover {
+            background: #f0f0f0;
+        }
+
+        .mic-icon button {
+            margin-top: 9px;
+            border-radius: 200%;
+            height: 38px;
+            border: none;
+            margin-left: 22px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+
+        }
+
+        .mic-icon button:hover {
+            background: #aaa;
+        }
+
+        .create button {
+            margin-left: 230px;
+            display: flex;
+            flex-direction: row;
+            width: 97px;
+            height: 36px;
+            margin-top: 9px;
+            padding: 0px;
+            align-items: center;
+            border-radius: 63px;
+            border: transparent;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+
+        .create button:hover {
+            background: #aaa;
+        }
+
+        .create button>svg {
+            width: 24px;
+            height: 24px;
+            padding-left: 10px;
+        }
+
+        .create button>span {
+            font-size: 14px;
+            padding-left: 6px;
+            padding-top: 2px;
+            font-weight: 600;
+        }
+
+        .notification-icon {
+
+            margin-top: 16px;
+            margin-left: 17px;
+        }
+
+        .profile button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50px;
+            background-color: #7e57c2;
+            border: none;
+            color: white;
+            margin-top: 12px;
+            margin-left: 29px;
+            font-size: 17px;
+        }
+
+
+
+        .upper-slide {
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+            background: white;
+        }
+
+        .button-slids {
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            padding: 10px 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .button-slids::-webkit-scrollbar {
+            display: none;
+
+        }
+
+
+        .button-slids button {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: none;
+            background-color: #f2f2f2;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .button-slids button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .settings-layout {
+            width: 229px;
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            position: fixed;
+            background: white;
+        }
+
+        .first-container {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            border-bottom: solid 1px;
+            padding-bottom: 10px;
+        }
+
+        .first-container>button {
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            padding-right: 80px;
+            font-weight: 600;
+
+        }
+
+        .first-container>button>span {
+            padding: 14px;
+        }
+
+        .first-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .second-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: solid 1px;
+        }
+
+        .second-container>button {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+
+        }
+
+        .second-container>button>span>img {
+            border-radius: 50px;
+        }
+
+        .second-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+
+        }
+
+        .third-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: solid 1px;
+
+        }
+
+        .third-container>button {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .third-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .fourth-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 200px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: solid 1px;
+
+        }
+
+        .fourth-container>button {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .fourth-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .contentlayout {
+            width: calc(100% - 230px);
+            display: flex;
+            flex-direction: column;
+            margin-left: 230px;
+        }
+
+        .settings-content {
+            display: flex;
+            margin-top: 48px;
+        }
+
+        .fifth-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 200px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: "Roboto", "Arial", sans-serif;
+            border-bottom: solid 1px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .fifth-container>button {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .fifth-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .sixth-container {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            width: 200px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            border-bottom: 1px solid;
+        }
+
+        .sixth-container>button {
+            height: 40px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #ffffff;
+            font-size: 14px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+
+        }
+
+        .sixth-container>button:hover {
+            background: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .seventh-container {
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #767676;
+            padding-top: 16px;
+        }
+
+        .seventh-container.box-i {
+            padding: 24px 16px 0px 16px;
+        }
+
+        .vedio-content {
+            height: 100%;
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin-top: 50px;
+
+        }
+
+        .i-content>img {
+            width: 400px;
+            height: 226px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .i-content {
+            width: 400px;
+            height: 354px;
+            padding: 8px;
+            transition: background-color 0.25s ease-in-out;
+            cursor: pointer;
+            border-radius: 16px;
+        }
+
+        .three-dot>button {
+            width: 35px;
+            height: 29px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+        }
+
+        .i-content.three-dot>button:hover {
+            color: #aaa;
+            cursor: pointer;
+
+        }
+
+        .i-content:nth-child(5n + 1):hover {
+            background-color: #ffafafd3;
+        }
+
+        .i-content:nth-child(5n + 2):hover {
+            background-color: #b2bffff4;
+        }
+
+        .i-content:nth-child(5n):hover {
+            background-color: #d5ffb3d9;
+        }
+
+        .i-content:nth-child(5n + 3):hover {
+            background-color: #66d1fed3;
+        }
+
+        .i-content:nth-child(5n + 4):hover {
+            background-color: #f88d46d3;
+        }
+
+
+        .logo-i>img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50px;
+            display: flex;
+        }
+
+        .logo-i {
+            display: flex;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+        .shorts-logo {
+            width: 100%;
+            height: 34px;
+            display: flex;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .shorts-logo>svg {
+            pointer-events: none;
+            display: inherit;
+            height: 100%;
+        }
+
+        .i-short img {
+            width: 234px;
+            height: 350px;
+            border-radius: 10px;
+        }
+
+        .i-short {
+            width: 234px;
+            height: 426px;
+            transition: background-color 0.25s ease-in-out;
+            cursor: pointer;
+            border-radius: 16px;
+            padding: 10px;
+        }
+
+        .shorts-content {
+            display: flex;
+
+        }
+
+        .words {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .words>button {
+            width: 54px;
+            height: 24px;
+            border: none;
+            background: transparent;
+            border-radius: 102px;
+        }
+
+        .i-short:nth-child(4n + 1):hover {
+            background-color: #94fbfdd3;
+        }
+
+        .i-short:nth-child(4n + 2):hover {
+            background-color: #d9ff88f4;
+        }
+
+        .i-short:nth-child(4n + 3):hover {
+            background-color: #ffaeeed9;
+        }
+
+        .i-short:nth-child(4n):hover {
+            background-color: #f7965ad9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="top">
+            <div class="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false"
+                    aria-hidden="true" style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                    <path
+                        d="M20 5H4a1 1 0 000 2h16a1 1 0 100-2Zm0 6H4a1 1 0 000 2h16a1 1 0 000-2Zm0 6H4a1 1 0 000 2h16a1 1 0 000-2Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" id="yt-ringo2-svg_yt9" width="93" height="20"
+                    viewBox="0 0 93 20" focusable="false" aria-hidden="true"
+                    style="pointer-events: none; display: inherit; width: 93px; height: 20px;">
+                    <g>
+                        <path
+                            d="M14.4848 20C14.4848 20 23.5695 20 25.8229 19.4C27.0917 19.06 28.0459 18.08 28.3808 16.87C29 14.65 29 9.98 29 9.98C29 9.98 29 5.34 28.3808 3.14C28.0459 1.9 27.0917 0.94 25.8229 0.61C23.5695 0 14.4848 0 14.4848 0C14.4848 0 5.42037 0 3.17711 0.61C1.9286 0.94 0.954148 1.9 0.59888 3.14C0 5.34 0 9.98 0 9.98C0 9.98 0 14.65 0.59888 16.87C0.954148 18.08 1.9286 19.06 3.17711 19.4C5.42037 20 14.4848 20 14.4848 20Z"
+                            fill="#FF0033"></path>
+                        <path d="M19 10L11.5 5.75V14.25L19 10Z" fill="white"></path>
+                    </g>
+                    <g id="youtube-paths_yt9">
+                        <path
+                            d="M37.1384 18.8999V13.4399L40.6084 2.09994H38.0184L36.6984 7.24994C36.3984 8.42994 36.1284 9.65994 35.9284 10.7999H35.7684C35.6584 9.79994 35.3384 8.48994 35.0184 7.22994L33.7384 2.09994H31.1484L34.5684 13.4399V18.8999H37.1384Z">
+                        </path>
+                        <path
+                            d="M44.1003 6.29994C41.0703 6.29994 40.0303 8.04994 40.0303 11.8199V13.6099C40.0303 16.9899 40.6803 19.1099 44.0403 19.1099C47.3503 19.1099 48.0603 17.0899 48.0603 13.6099V11.8199C48.0603 8.44994 47.3803 6.29994 44.1003 6.29994ZM45.3903 14.7199C45.3903 16.3599 45.1003 17.3899 44.0503 17.3899C43.0203 17.3899 42.7303 16.3499 42.7303 14.7199V10.6799C42.7303 9.27994 42.9303 8.02994 44.0503 8.02994C45.2303 8.02994 45.3903 9.34994 45.3903 10.6799V14.7199Z">
+                        </path>
+                        <path
+                            d="M52.2713 19.0899C53.7313 19.0899 54.6413 18.4799 55.3913 17.3799H55.5013L55.6113 18.8999H57.6012V6.53994H54.9613V16.4699C54.6812 16.9599 54.0312 17.3199 53.4212 17.3199C52.6512 17.3199 52.4113 16.7099 52.4113 15.6899V6.53994H49.7812V15.8099C49.7812 17.8199 50.3613 19.0899 52.2713 19.0899Z">
+                        </path>
+                        <path d="M62.8261 18.8999V4.14994H65.8661V2.09994H57.1761V4.14994H60.2161V18.8999H62.8261Z">
+                        </path>
+                        <path
+                            d="M67.8728 19.0899C69.3328 19.0899 70.2428 18.4799 70.9928 17.3799H71.1028L71.2128 18.8999H73.2028V6.53994H70.5628V16.4699C70.2828 16.9599 69.6328 17.3199 69.0228 17.3199C68.2528 17.3199 68.0128 16.7099 68.0128 15.6899V6.53994H65.3828V15.8099C65.3828 17.8199 65.9628 19.0899 67.8728 19.0899Z">
+                        </path>
+                        <path
+                            d="M80.6744 6.26994C79.3944 6.26994 78.4744 6.82994 77.8644 7.73994H77.7344C77.8144 6.53994 77.8744 5.51994 77.8744 4.70994V1.43994H75.3244L75.3144 12.1799L75.3244 18.8999H77.5444L77.7344 17.6999H77.8044C78.3944 18.5099 79.3044 19.0199 80.5144 19.0199C82.5244 19.0199 83.3844 17.2899 83.3844 13.6099V11.6999C83.3844 8.25994 82.9944 6.26994 80.6744 6.26994ZM80.7644 13.6099C80.7644 15.9099 80.4244 17.2799 79.3544 17.2799C78.8544 17.2799 78.1644 17.0399 77.8544 16.5899V9.23994C78.1244 8.53994 78.7244 8.02994 79.3944 8.02994C80.4744 8.02994 80.7644 9.33994 80.7644 11.7299V13.6099Z">
+                        </path>
+                        <path
+                            d="M92.6517 11.4999C92.6517 8.51994 92.3517 6.30994 88.9217 6.30994C85.6917 6.30994 84.9717 8.45994 84.9717 11.6199V13.7899C84.9717 16.8699 85.6317 19.1099 88.8417 19.1099C91.3817 19.1099 92.6917 17.8399 92.5417 15.3799L90.2917 15.2599C90.2617 16.7799 89.9117 17.3999 88.9017 17.3999C87.6317 17.3999 87.5717 16.1899 87.5717 14.3899V13.5499H92.6517V11.4999ZM88.8617 7.96994C90.0817 7.96994 90.1717 9.11994 90.1717 11.0699V12.0799H87.5717V11.0699C87.5717 9.13994 87.6517 7.96994 88.8617 7.96994Z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <span>
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                            focusable="false" aria-hidden="true"
+                            style="pointer-events: none; display: inherit; width: 24px; height: 24px;padding-left:4px;">
+                            <path
+                                d="M11 2a9 9 0 105.641 16.01.966.966 0 00.152.197l3.5 3.5a1 1 0 101.414-1.414l-3.5-3.5a1 1 0 00-.197-.153A8.96 8.96 0 0020 11a9 9 0 00-9-9Zm0 2a7 7 0 110 14 7 7 0 010-14Z">
+                            </path>
+                        </svg>
+
+                    </button>
+                </span>
+            </div>
+            <div class="mic-icon">
+                <button> <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                        focusable="false" aria-hidden="true"
+                        style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                        <path
+                            d="M18.063 14.5a1 1 0 111.73 1A8.998 8.998 0 0113 19.942V22a1 1 0 11-2 0v-2.058A8.999 8.999 0 014.206 15.5l.866-.5.865-.5a7.002 7.002 0 0012.125 0ZM12 1a5 5 0 015 5v5a5 5 0 01-10 0V6a5 5 0 015-5ZM4.572 14.134a1 1 0 011.365.366l-1.731 1a1 1 0 01.366-1.366ZM12 3a3 3 0 00-3 3v5a3 3 0 106 0V6a3 3 0 00-3-3Z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="create">
+                <button> <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                        focusable="false" aria-hidden="true"
+                        style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                        <path
+                            d="M12 3a1 1 0 00-1 1v7H4a1 1 0 000 2h7v7a1 1 0 002 0v-7h7a1 1 0 000-2h-7V4a1 1 0 00-1-1Z">
+                        </path>
+                    </svg>
+                    <span>Create</span>
+
+                </button>
+
+            </div>
+            <div class="notification-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false"
+                    aria-hidden="true" style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                    <path
+                        d="M16 19a4 4 0 11-8 0H4.765C3.21 19 2.25 17.304 3.05 15.97l1.806-3.01A1 1 0 005 12.446V8a7 7 0 0114 0v4.446c0 .181.05.36.142.515l1.807 3.01c.8 1.333-.161 3.029-1.716 3.029H16ZM12 3a5 5 0 00-5 5v4.446a3 3 0 01-.428 1.543L4.765 17h14.468l-1.805-3.01A3 3 0 0117 12.445V8a5 5 0 00-5-5Zm-2 16a2 2 0 104 0h-4Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="profile">
+                <button> R</button>
+            </div>
+
+        </div>
+        <div class="settings-content">
+            <div class="settings-layout">
+                <div class="first-container">
+                    <button>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="m11.485 2.143-8 4.8-2 1.2a1 1 0 001.03 1.714L3 9.567V20a2 2 0 002 2h5v-8h4v8h5a2 2 0 002-2V9.567l.485.29a1 1 0 001.03-1.714l-2-1.2-8-4.8a1 1 0 00-1.03 0Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Home</button>
+                    <button>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="m13.467 1.19-8 4.7a5 5 0 00-.255 8.46 5 5 0 005.32 8.462l8-4.7a5 5 0 00.258-8.462 5 5 0 001.641-6.464l-.12-.217a5 5 0 00-6.844-1.78m5.12 2.79a2.999 2.999 0 01-1.067 4.107l-1.327.78a1 1 0 00.096 1.775l.943.423a3 3 0 01.288 5.323l-8 4.7a3 3 0 01-3.039-5.173l1.327-.78a1 1 0 00-.097-1.775l-.942-.423a3 3 0 01-.288-5.323l8-4.7a3 3 0 014.106 1.066ZM15 12l-5-3v6l5-3Z">
+                                </path>
+                            </svg>
+                        </span>
+                        shorts
+                    </button>
+                </div>
+
+                <div class="second-container">
+                    <button>Subscriptions</button>
+                    <button>
+                        <span><img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" height="24"
+                                width="24"
+                                src="https://yt3.ggpht.com/ytc/AIdro_mkEWf7jIHRb8muUoaZAZHVdKcFSYK2LqrXduY4eHTXEMk=s88-c-k-c0x00ffffff-no-rj">
+                        </span>
+                        Gaming Rascal
+                    </button>
+                    <button>
+                        <span><img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" height="24"
+                                width="24"
+                                src="https://yt3.ggpht.com/_Jez9D6mFeGfR4ubk7GY-7ZFGcfWR1hBAYqmzqPBQIBq6ycDCKvzi1u1073ZVv0FV7mFqdIyxw=s88-c-k-c0x00ffffff-no-rj">
+                        </span>
+                        Brototype Tamil
+                    </button>
+                    <button>
+                        <span><img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" height="24"
+                                width="24"
+                                src="https://yt3.ggpht.com/Qyv-4G17sFt9ty67K71OEhiEQ9ryqsBlZPBMUU4ozcaPC1bke45Vm_qeGkVgCmglMLOrtj0qpA=s88-c-k-c0x00ffffff-no-rj">
+                        </span>
+                        CSSnippets
+                    </button>
+                    <button>
+                        <span><img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" height="24"
+                                width="24"
+                                src="https://yt3.ggpht.com/UhpvWOar1ebGOAgH-7ndapTVe01LCQwLK7OC_Vn_cCMcnB_r4hNIx7zbJimtrz6_FvrM4x_VKw=s88-c-k-c0x00ffffff-no-rj">
+                        </span>
+                        Tech SuperStar
+                    </button>
+                    <button>
+                        <span><img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" height="24"
+                                width="24"
+                                src="https://yt3.ggpht.com/7HR7AS1zqCg3HDKKhU734Hoqaz277rXAkSkjJlui8cf_jrw31GZF2aPn3i9JS6Hhwgcxutp0jg=s88-c-k-c0x00ffffff-no-rj">
+                        </span>
+                        UR Cristiano
+                    </button>
+                </div>
+                <div class="third-container">
+                    <button>You</button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M8.76 1.487a11 11 0 11-7.54 12.706 1 1 0 011.96-.4 9 9 0 0014.254 5.38A9 9 0 0016.79 4.38 9 9 0 004.518 7H7a1 1 0 010 2H1V3a1 1 0 012 0v2.678a11 11 0 015.76-4.192ZM12 6a1 1 0 00-1 1v5.58l.504.288 3.5 2a1 1 0 10.992-1.736L13 11.42V7a1 1 0 00-1-1Z">
+                                </path>
+                            </svg>
+                        </span>
+                        History
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M16 15.395a.5.5 0 01.762-.426L22.5 18.5l-5.738 3.531a.5.5 0 01-.762-.425v-6.212ZM14 19H4a1 1 0 110-2h10v2Zm6-8a1 1 0 110 2H4a1 1 0 110-2h16Zm0-6a1 1 0 110 2H4a1 1 0 010-2h16Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Playlist
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 110 18.001A9 9 0 0112 3Zm0 3a1 1 0 00-1 1v5.565l.485.292 3.33 2a1 1 0 001.03-1.714L13 11.435V7a1 1 0 00-1-1Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Watch Later
+                    </button>
+                    <button>
+                        <span>
+                            <div style="width: 24px; height: 24px; display: block; fill: currentcolor;"><svg
+                                    xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                    <path
+                                        d="M9.221 1.795a1 1 0 011.109-.656l1.04.173a4 4 0 013.252 4.784L14 9h4.061a3.664 3.664 0 013.576 2.868A3.68 3.68 0 0121 14.85l.02.087A3.815 3.815 0 0120 18.5v.043l-.01.227a2.82 2.82 0 01-.135.663l-.106.282A3.754 3.754 0 0116.295 22h-3.606l-.392-.007a12.002 12.002 0 01-5.223-1.388l-.343-.189-.27-.154a2.005 2.005 0 00-.863-.26l-.13-.004H3.5a1.5 1.5 0 01-1.5-1.5V12.5A1.5 1.5 0 013.5 11h1.79l.157-.013a1 1 0 00.724-.512l.063-.145 2.987-8.535Zm-1.1 9.196A3 3 0 015.29 13H4v4.998h1.468a4 4 0 011.986.528l.27.155.285.157A10 10 0 0012.69 20h3.606c.754 0 1.424-.483 1.663-1.2l.03-.126a.819.819 0 00.012-.131v-.872l.587-.586c.388-.388.577-.927.523-1.465l-.038-.23-.02-.087-.21-.9.55-.744A1.663 1.663 0 0018.061 11H14a2.002 2.002 0 01-1.956-2.418l.623-2.904a2 2 0 00-1.626-2.392l-.21-.035-2.71 7.741Z">
+                                    </path>
+                                </svg></div>
+                        </span>
+                        Liked Videos
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M21 3H3a2 2 0 00-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5a2 2 0 00-2-2ZM3 19V5h18v14H3Zm13-7L9.5 8v8l6.5-4Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Your Videos
+                    </button>
+                </div>
+                <div class="fourth-container">
+                    Explore
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M16 6h4a2 2 0 012 2v10a4 4 0 01-4 4H6a4 4 0 01-4-4V8a2 2 0 012-2h4V4.344l.005-.048C8.195 2.32 10.039 1 12 1c1.96 0 3.805 1.32 3.995 3.296l.005.048V6Zm-6 0h4V4.447C13.906 3.732 13.149 3 12 3s-1.906.732-2 1.447V6ZM4 18a2 2 0 002 2h12a2 2 0 002-2V8H4v10Zm11-9a1 1 0 00-1 1v.553c-.094.715-.851 1.447-2 1.447s-1.906-.732-2-1.447V10a1 1 0 00-2 0v.656l.005.048C8.195 12.68 10.04 14 12 14c1.961 0 3.805-1.32 3.995-3.296l.005-.048V10a1 1 0 00-1-1Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Shopping
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M11 2.766v10.99a4.5 4.5 0 101.994 3.976L13 17.5V9.2l5.485 3.292A1 1 0 0020 11.634V6.966a1 1 0 00-.485-.857l-7-4.2A1 1 0 0011 2.766Zm2 4.102V4.533l5 3v2.335l-5-3ZM8.5 15a2.5 2.5 0 110 5.001A2.5 2.5 0 018.5 15Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Music
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M20 3H4a3 3 0 00-2.587 1.485l-.001.003-.01.015-.072.133-.037.077a3.046 3.046 0 00-.264.869l-.002.011-.011.1-.005.063-.005.06A3.004 3.004 0 001 6v12a3 3 0 003 3h16a3 3 0 003-3V6a3 3 0 00-3-3ZM4 5h1.986l2 2-2 2H3v-.686L4.313 7 3.04 5.725A1 1 0 014 5Zm13.315 2-2-2h3.67l2 2-2 2h-3.67l2-2Zm-6.5 0L8.814 5h3.672l2 2-2 2H8.815l2-2ZM3 18v-7h18v7a1 1 0 01-1 1H4a1 1 0 01-1-1Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Films
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M4.222 4.223a11 11 0 000 15.555 1 1 0 101.414-1.414 9 9 0 010-12.727 1 1 0 10-1.414-1.414Zm13.79.353a1 1 0 000 1.414 8.5 8.5 0 010 12.022 1 1 0 001.413 1.414 10.501 10.501 0 000-14.85 1 1 0 00-1.413 0Zm-2.83 2.827a1 1 0 000 1.414 4.501 4.501 0 010 6.365 1.001 1.001 0 001.414 1.414 6.5 6.5 0 000-9.193 1 1 0 00-1.415 0Zm-7.78 0a6.5 6.5 0 000 9.194 1 1 0 001.415-1.415 4.5 4.5 0 010-6.364 1.001 1.001 0 00-1.415-1.415ZM12 10a2 2 0 100 4 2 2 0 000-4Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Live
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M15.97 2.615 12 4.998 8.03 2.615a2 2 0 00-2.06 0l-5 3A2 2 0 000 7.33v7.34a2 2 0 00.97 1.715l10 6c.634.38 1.426.38 2.06 0l10-6A1.998 1.998 0 0024 14.67V7.33a2 2 0 00-.97-1.715l-5-3a2 2 0 00-2.06 0ZM12 7.33l5-3 5 3v7.34l-10 6-10-6V7.33l5-3 5 3ZM7 7.5a1 1 0 00-1 1v1.502H4.5a1 1 0 000 2H6V13.5a1 1 0 102 0v-1.498h1.5a1 1 0 000-2H8V8.5a1 1 0 00-1-1Zm11.5 1.502a1.5 1.5 0 100 3 1.5 1.5 0 000-3Zm-4 2a1.5 1.5 0 100 3 1.5 1.5 0 000-3Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Gaming
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M23 17V3H1v14a4 4 0 004 4h14a4 4 0 004-4ZM3 17V5h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2ZM18 7H6a1 1 0 000 2h12a1 1 0 100-2Zm0 4h-3a1 1 0 000 2h3a1 1 0 000-2Zm-7 0H6a1 1 0 00-1 1v4a1 1 0 001 1h5a1 1 0 001-1v-4a1 1 0 00-1-1Zm-4 4v-2h3v2H7Zm11 0h-3a1 1 0 000 2h3a1 1 0 000-2Z">
+                                </path>
+                            </svg>
+                        </span>
+                        News
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M23 17V3H1v14a4 4 0 004 4h14a4 4 0 004-4ZM3 17V5h18v12a2 2 0 01-2 2H5a2 2 0 01-2-2ZM18 7H6a1 1 0 000 2h12a1 1 0 100-2Zm0 4h-3a1 1 0 000 2h3a1 1 0 000-2Zm-7 0H6a1 1 0 00-1 1v4a1 1 0 001 1h5a1 1 0 001-1v-4a1 1 0 00-1-1Zm-4 4v-2h3v2H7Zm11 0h-3a1 1 0 000 2h3a1 1 0 000-2Z">
+                                </path>
+                            </svg>
+                        </span>
+                        sports
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M11.485 2.143 1.486 8.148a1 1 0 000 1.715L5 11.968v4.957a2 2 0 00.992 1.73l5.504 3.21a1 1 0 001.008 0l5.504-3.212A2 2 0 0019 16.926V11.97l2-1.2V18a1 1 0 002 0V9a1 1 0 00-.485-.852l-10-6.005a1 1 0 00-1.03 0ZM3.944 9.005 12 4.167l8.057 4.837L12 13.834l-8.056-4.83Zm8.57 6.852L17 13.167v3.759l-5 2.917-5-2.917v-3.758l4.486 2.69a1 1 0 001.028-.001Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Courses
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M11.545 2.782a3.25 3.25 0 00-2.613 2.145 1 1 0 101.888.66 1.25 1.25 0 011.005-.825A1.251 1.251 0 1112 7.25a1 1 0 00-1 1v2.214l-7.56 5.04C.973 17.15 2.138 21 5.106 21h14.38c3.02 0 4.147-3.957 1.582-5.55L13 10.444V9.092a3.25 3.25 0 00-1.455-6.31ZM4.55 17.168l7.468-4.98 7.994 4.962c.855.53.478 1.85-.528 1.85H5.104c-.99 0-1.377-1.283-.554-1.832Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Fashion & beauty
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M12 1a10 10 0 00-8.66 15 1 1 0 001.732-1 8 8 0 1113.856 0 1 1 0 001.732 1A10 10 0 0012 1Zm0 5a4 4 0 00-4 4v4a4 4 0 003 3.874V20h-1a1 1 0 000 2h4a1 1 0 000-2h-1v-2.126A4 4 0 0016 14v-4a4 4 0 00-4-4Zm0 2a2 2 0 012 2v4a2 2 0 01-4 0v-4a2 2 0 012-2Z">
+                                </path>
+                            </svg>
+                        </span>
+                        podcast
+                    </button>
+
+
+                </div>
+                <div class="fifth-container">
+                    More from YouTube
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"
+                                enable-background="new 0 0 24 24" xml:space="preserve" focusable="false"
+                                aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <g>
+                                    <path fill="#FF0033"
+                                        d="M21.58,7.19c-0.23-0.86-0.91-1.54-1.77-1.77C18.25,5,12,5,12,5S5.75,5,4.19,5.42   C3.33,5.65,2.65,6.33,2.42,7.19C2,8.75,2,12,2,12s0,3.25,0.42,4.81c0.23,0.86,0.91,1.54,1.77,1.77C5.75,19,12,19,12,19   s6.25,0,7.81-0.42c0.86-0.23,1.54-0.91,1.77-1.77C22,15.25,22,12,22,12S22,8.75,21.58,7.19z">
+                                    </path>
+                                    <polygon fill="#FFFFFF" points="10,15 15,12 10,9  "></polygon>
+                                </g>
+                            </svg>
+                        </span>
+                        YouTube Premium
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"
+                                enable-background="new 0 0 24 24" xml:space="preserve" focusable="false"
+                                aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <g>
+                                    <path fill="#FF0033"
+                                        d="M11.13,1.21c0.48-0.28,1.26-0.28,1.74,0l8.01,4.64c0.48,0.28,0.87,0.97,0.87,1.53v9.24   c0,0.56-0.39,1.25-0.87,1.53l-8.01,4.64c-0.48,0.28-1.26,0.28-1.74,0l-8.01-4.64c-0.48-0.28-0.87-0.97-0.87-1.53V7.38   c0-0.56,0.39-1.25,0.87-1.53L11.13,1.21z">
+                                    </path>
+                                    <polygon fill="#FFFFFF" points="10,15 15,12 10,9  "></polygon>
+                                    <path fill="#FFFFFF"
+                                        d="M12,6c0.11,0,0.19,0.03,0.21,0.04l4.89,2.82c0.05,0.03,0.14,0.2,0.14,0.37v5.67c0,0.17-0.09,0.34-0.14,0.37   l-4.9,2.83c-0.03,0.01-0.1,0.04-0.21,0.04c-0.11,0-0.19-0.03-0.21-0.04l-4.9-2.83c-0.05-0.03-0.15-0.2-0.15-0.37V9.24   c0-0.17,0.1-0.34,0.14-0.37l4.9-2.83C11.82,6.03,11.89,6,12,6 M12,5c-0.25,0-0.51,0.06-0.71,0.18L6.39,8   C5.99,8.23,5.75,8.77,5.75,9.24v5.67c0,0.47,0.24,1,0.64,1.24l4.9,2.83c0.2,0.12,0.46,0.18,0.71,0.18c0.25,0,0.51-0.06,0.71-0.18   l4.9-2.83c0.41-0.24,0.64-0.77,0.64-1.24V9.24c0-0.47-0.23-1-0.64-1.24l-4.9-2.82C12.51,5.06,12.26,5,12,5L12,5z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </span>
+                        YouTube Studio
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"
+                                enable-background="new 0 0 24 24" xml:space="preserve" focusable="false"
+                                aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <g>
+                                    <circle id="XMLID_4814__yt117" fill="#FF0033" cx="12" cy="12" r="11"></circle>
+                                    <path fill="#FFFFFF"
+                                        d="M12,6.25c3.17,0,5.75,2.58,5.75,5.75s-2.58,5.75-5.75,5.75S6.25,15.17,6.25,12S8.83,6.25,12,6.25 M12,5.25   c-3.73,0-6.75,3.02-6.75,6.75s3.02,6.75,6.75,6.75s6.75-3.02,6.75-6.75S15.73,5.25,12,5.25L12,5.25z">
+                                    </path>
+                                    <polygon fill="#FFFFFF" points="10,15 15,12 10,9  "></polygon>
+                                </g>
+                            </svg>
+                        </span>
+                        YouTube Music
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24"
+                                enable-background="new 0 0 24 24" xml:space="preserve" focusable="false"
+                                aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <g>
+                                    <g>
+                                        <path fill="#FF0033"
+                                            d="M22.64,13.2c-0.01-1.04-0.62-5.98-0.9-6.74c-0.19-0.5-0.58-1.4-1.31-1.95c-0.94-0.7-1.7-0.83-2.68-0.85    C17.06,3.64,6.12,5.03,4.79,5.51C3.8,5.88,3.03,6.35,2.42,6.95c-0.99,0.98-1.18,1.93-1.02,3.6c0.14,1.52,0.85,6.55,1.21,7.59    c0.39,1.15,1.11,2.03,2.3,2.16c3.62,0.39,4.48-1.6,12.9-1.58c2.55,0.01,3.82-1.11,4.35-2.08C22.77,15.49,22.65,13.99,22.64,13.2z">
+                                        </path>
+                                        <path fill="#212121"
+                                            d="M17.47,4.04C17.47,4.04,17.48,4.04,17.47,4.04c0.94,0.02,1.67,0.14,2.56,0.81    c0.7,0.53,1.08,1.39,1.25,1.86c0.28,0.73,0.85,5.44,0.86,6.43c0.01,0.76,0.12,2.19-0.47,3.28c-0.5,0.92-1.71,1.98-4.13,1.98    c-0.01,0-0.01,0-0.02,0c-0.04,0-0.07,0-0.11,0c-7.23,0-8.55,1.56-11.33,1.56c-0.27,0-0.56-0.02-0.87-0.05    c-1.13-0.12-1.82-0.96-2.19-2.06c-0.34-0.99-1.01-5.79-1.15-7.24c-0.15-1.6,0.03-2.51,0.98-3.44c0.58-0.57,1.32-1.02,2.27-1.37    C6.38,5.35,16.73,4.04,17.47,4.04 M17.47,3.2c-0.47,0-3.53,0.37-6.09,0.72C8.82,4.27,5.6,4.75,4.84,5.03    c-1.06,0.39-1.9,0.9-2.56,1.56C1.05,7.8,0.9,9.06,1.05,10.7c0.12,1.27,0.8,6.28,1.19,7.43c0.53,1.55,1.55,2.48,2.89,2.62    c0.33,0.04,0.64,0.05,0.96,0.05c1.17,0,2.1-0.25,3.18-0.54c1.69-0.45,3.8-1.02,8.15-1.02l0.11,0l0.02,0    c1.07,0,3.68-0.24,4.86-2.42c0.63-1.17,0.6-2.59,0.58-3.43c0-0.09,0-0.18-0.01-0.26c-0.01-1.01-0.59-5.85-0.92-6.72    c-0.38-1-0.89-1.75-1.53-2.23c-1.05-0.79-1.94-0.96-3.04-0.98l-0.01,0L17.47,3.2L17.47,3.2z">
+                                        </path>
+                                    </g>
+                                    <g>
+                                        <path fill="#FFFFFF"
+                                            d="M15.28,11.85c-0.03,0.02-0.05,0.03-0.08,0.05c-0.21,0.14-0.42,0.28-0.63,0.43    c-0.49,0.33-3.33,2.26-3.33,2.26c-0.24,0.18-0.7,0.47-0.87,0.38c-0.17-0.09-0.23-0.72-0.27-1.02l-0.01-0.07    c-0.05-0.36-0.46-3.83-0.51-4.21C9.56,9.56,9.5,9.17,9.62,9.08c0.13-0.1,0.47,0.01,0.58,0.05c0.66,0.21,3.93,1.35,4.95,1.86    c0.03,0.02,0.06,0.03,0.1,0.04c0.15,0.06,0.35,0.15,0.35,0.39C15.6,11.65,15.42,11.76,15.28,11.85z">
+                                        </path>
+                                        <path fill="#212121"
+                                            d="M10.04,9.59c1.14,0.38,3.77,1.32,5.01,1.87c-0.15,0.1-0.3,0.2-0.45,0.3c-0.58,0.39-3.94,2.68-3.94,2.68    l-0.02,0.01l-0.02,0.01c0,0,0,0,0,0c0-0.03-0.01-0.05-0.01-0.07l-0.02-0.13l-0.01-0.08c-0.04-0.31-0.31-2.58-0.48-3.94    C10.08,9.98,10.06,9.76,10.04,9.59 M9.4,8.56c-0.07,0-0.14,0.01-0.18,0.05c-0.15,0.11-0.07,0.58-0.05,0.7    c0.05,0.45,0.54,4.56,0.6,4.99l0.01,0.08c0.05,0.36,0.12,1.1,0.33,1.21c0.03,0.01,0.06,0.02,0.1,0.02c0.25,0,0.68-0.28,0.93-0.47    c0,0,3.36-2.29,3.94-2.68c0.25-0.17,0.5-0.34,0.75-0.51c0.03-0.02,0.06-0.04,0.1-0.06c0.17-0.1,0.38-0.23,0.38-0.5    c-0.01-0.29-0.24-0.39-0.41-0.46c-0.04-0.02-0.08-0.03-0.11-0.05c-1.21-0.61-5.09-1.96-5.87-2.21C9.8,8.63,9.58,8.56,9.4,8.56    L9.4,8.56z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                        YouTube Kids
+                    </button>
+
+                </div>
+                <div class="sixth-container">
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M12.844 1h-1.687a2 2 0 00-1.962 1.616 3 3 0 01-3.92 2.263 2 2 0 00-2.38.891l-.842 1.46a2 2 0 00.417 2.507 3 3 0 010 4.525 2 2 0 00-.417 2.507l.843 1.46a2 2 0 002.38.892 3.001 3.001 0 013.918 2.263A2 2 0 0011.157 23h1.686a2 2 0 001.963-1.615 3.002 3.002 0 013.92-2.263 2 2 0 002.38-.892l.842-1.46a2 2 0 00-.418-2.507 3 3 0 010-4.526 2 2 0 00.418-2.508l-.843-1.46a2 2 0 00-2.38-.891 3 3 0 01-3.919-2.263A2 2 0 0012.844 1Zm-1.767 2.347a6 6 0 00.08-.347h1.687a4.98 4.98 0 002.407 3.37 4.98 4.98 0 004.122.4l.843 1.46A4.98 4.98 0 0018.5 12a4.98 4.98 0 001.716 3.77l-.843 1.46a4.98 4.98 0 00-4.123.4A4.979 4.979 0 0012.843 21h-1.686a4.98 4.98 0 00-2.408-3.371 4.999 4.999 0 00-4.12-.399l-.844-1.46A4.979 4.979 0 005.5 12a4.98 4.98 0 00-1.715-3.77l.842-1.459a4.98 4.98 0 004.123-.399 4.981 4.981 0 002.327-3.025ZM16 12a4 4 0 11-7.999 0 4 4 0 018 0Zm-4 2a2 2 0 100-4 2 2 0 000 4Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Settings
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="m4 2.999-.146.073A1.55 1.55 0 003 4.454v16.545a1 1 0 102 0v-6.491a7.26 7.26 0 016.248.115l.752.376a8.94 8.94 0 008 0l.145-.073c.524-.262.855-.797.855-1.382V4.458a1.21 1.21 0 00-1.752-1.083 7.26 7.26 0 01-6.496 0L12 2.999a8.94 8.94 0 00-8 0Zm7.105 1.79v-.002l.752.376A9.26 9.26 0 0019 5.641v7.62a6.95 6.95 0 01-6.105-.052l-.752-.376A9.261 9.261 0 005 12.355v-7.62a6.94 6.94 0 016.105.054Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Report history
+                    </button>
+                    <button>
+                        <span>
+                            <div style="width: 100%; height: 100%; display: block; fill: currentcolor;"><svg
+                                    xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                    <path
+                                        d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 110 18.001A9 9 0 0112 3Zm.5 3h-.483a3.45 3.45 0 00-3.089 1.909l-.323.644a1 1 0 001.79.894l.322-.643a1.46 1.46 0 011.3-.804h.483a1.5 1.5 0 01.153 2.992l-.306.016A1.5 1.5 0 0011 12.5v1a1 1 0 002 0v-.535A3.5 3.5 0 0012.5 6Zm-.5 9.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5Z">
+                                    </path>
+                                </svg></div>
+                        </span>
+                        help
+                    </button>
+                    <button>
+                        <span><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                focusable="false" aria-hidden="true"
+                                style="pointer-events: none; display: inherit; width: 24px; height: 24px;">
+                                <path
+                                    d="M19 2H5a4 4 0 00-4 4v10a4 4 0 004 4h2v1.604a1.41 1.41 0 002.095 1.232L14.2 20H19a4 4 0 004-4V6a4 4 0 00-4-4ZM5 4h14a2 2 0 012 2v10a2 2 0 01-2 2h-5.318l-.453.252L9 20.6V18H5a2 2 0 01-2-2V6a2 2 0 012-2Zm7 2a1 1 0 00-1 1v4.5a1 1 0 002 0V7a1 1 0 00-1-1Zm0 7.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Send feedback
+                    </button>
+                </div>
+                <div class="seventh-container">
+                    <div class="box-i">
+                        About Press Copyright
+                        Contact us Creator Advertise
+                        Developers
+                    </div>
+                    <div class="box-ii">
+
+                        Terms Privacy Policy & Safety
+                        How YouTube works
+                        Test new features
+                    </div>
+                    <div class="box-iii">
+                        © 2026 Google LLC
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentlayout">
+                <div class="upper-slide">
+                    <div class="button-slids">
+                        <button>All</button>
+                        <button>Gaming</button>
+                        <button>clash of clan</button>
+                        <button>podcast</button>
+                        <button>music</button>
+                        <button>news</button>
+                        <button>mixes</button>
+                        <button>css</button>
+                        <button>skill</button>
+                        <button>song</button>
+                        <button>movies</button>
+                        <button>Ai</button>
+                        <button>android</button>
+                        <button>live</button>
+                        <button>sports</button>
+                        <button>football</button>
+                        <button>CR7</button>
+                        <button>new to you</button>
+                        <button>watched</button>
+                        <button>judo</button>
+                        <button>cricket</button>
+                    </div>
+                </div>
+                <div class="vedio-content">
+
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/GIgKziO8PQQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAzJfFaOBDWnKKoNmj-I85Cop8-pg">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.googleusercontent.com/5m3LSPXDU3Ze22Zj7RDvz3GyixbLGcVDWRwqRafctuPf8-X7V-bsrRITc_-X23JCShvDoE23mUA=s160-c-k-c0x00ffffff-no-rj">
+
+
+
+                            <span>
+                                பேட்டரி வண்டி வாங்கலாமா🤔? | Electric🔋vs Petrol Bike⛽
+                            </span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="views">
+                            4 months ago
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/MA58PyL8JhA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLCo-Kve4BQob8hxbV7RLWZPnxffsQ">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.ggpht.com/UhpvWOar1ebGOAgH-7ndapTVe01LCQwLK7OC_Vn_cCMcnB_r4hNIx7zbJimtrz6_FvrM4x_VKw=s68-c-k-c0x00ffffff-no-rj">
+                            <span>
+                                வாங்கலாமா ✅ வேண்டாமா ❌ OnePlus Nord 5 ⭐️ TechSuperStar ⭐️
+                            </span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <br>
+
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/dApny82NTnM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLBhXwAVIBZCU7_Tz6Uu-rH0sdw_TA">
+                        <div class="logo-i">
+                            <img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" width="24"
+                                src="https://yt3.ggpht.com/ytc/AIdro_nxl_JlPiXzhjgQ6YSGL8poYSIaoPM4GnyqrgBjMWZbEWU=s68-c-k-c0x00ffffff-no-rj">
+
+                            <span>
+                                Luka Modrić & Gareth Bale vs Real Madrid in 2011
+
+                            </span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/IFhKB5zHWFg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLBzxdg91OnQqxeJmOKZMOWnbOX3kg">
+                        <div class="logo-i">
+                            <img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" width="24"
+                                src="https://yt3.ggpht.com/eG8VP9X4vymQyH4Q7pxwHjK0JwFniE38gUTHKfyfbJxEMsvnfvjZVitJgXxgjn-Zn4yaoXUI=s68-c-k-c0x00ffffff-no-rj">
+
+                            <span>PARIS - 3D TIMELAPSE - 300 BCE to 2025</span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/tN0Weg_OHPc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDYUmYHTnrOEuszEhfZ8QwHm2ihBQ">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.ggpht.com/2TqoJQQ3kGUiUoq6ZIIwu0S0BsF1P_3rmbRzmgxHO2U3UD0JRm5E1CEbEEn6vGzzVVvqKxgVnw=s68-c-k-c0x00ffffff-no-rj">
+                            The Match That Made Paolo Maldini The Most Feared Defender
+                            <span></span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/XvObYVsVxhU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDVnDLfkIDWeU8cupaX66XN7sFcqg">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.ggpht.com/DpGHd6R0i3jgWquotYXpOsVPALAuWD9e_U7fohnMy4Vo3EANA-2v0YKtaMMgRa_OZ1nemOib=s68-c-k-c0x00ffffff-no-rj">
+                            <span>Real Madrid vs Monaco | Key Moments | UEFA Champions League 2026</span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/J5vgzmYn6dM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDRRaTqwIRt__JtrQT1RBEReDjAlw">
+                        <div class="logo-i">
+                            <img id="img" draggable="false" class="style-scope yt-img-shadow" alt="" width="40"
+                                src="https://yt3.ggpht.com/XIPAWconAS-PIi-Q449RCUBqKifhCo29x8aCehHj9k0hFUlw_VMVIMpkPJj0S_pNilzf0UQlPg=s88-c-k-c0x00ffffff-no-rj">
+                            <span>
+                                100% Best Play Settings in eFootball 2026 Mobile ⚽ | Ultimate eFootball 2026 Mobile
+                                Settings 🔥
+                            </span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/uVzCPllwmqw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLARng0zlNxotVlaicytZw3O23WESQ">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.ggpht.com/oV13U7_H05D8q4oE448M8f57RdmfLj4XqPLoSU2iL2gQF5bP6dqMe8VyAntBFvZQwLxQkNHZ=s68-c-k-c0x00ffffff-no-rj">
+                            <span>
+                                The Perfect Morning Habits (Backed by Science)
+                            </span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-content">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/ttDbSrXnCH4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAwHXSRpSYKiqE2OHWnjperYzF8XQ">
+                        <div class="logo-i">
+                            <img alt=""
+                                class="ytCoreImageHost yt-spec-avatar-shape__image ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleToFill ytCoreImageLoaded"
+                                src="https://yt3.ggpht.com/7_SoHHc6yo91DF6mPAAVuibPdGZeYxR8owzFBusV85WpIuZTLOkjJewi6Bz56Hioq1yksTlhtA=s68-c-k-c0x00ffffff-no-rj">
+                            <span>Cristiano Ronaldo 2008 ► Ballon d'Or Level Skills 👑</span>
+                            <div class="three-dot">
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                        focusable="false" aria-hidden="true"
+                                        style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                        <path
+                                            d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="shorts-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false"
+                        aria-hidden="true" style="pointer-events: none; display: inherit; width: ; height: 100%;">
+                        <path
+                            d="m19.45,3.88c1.12,1.82.48,4.15-1.42,5.22l-1.32.74.94.41c1.36.58,2.27,1.85,2.35,3.27.08,1.43-.68,2.77-1.97,3.49l-8,4.47c-1.91,1.06-4.35.46-5.48-1.35-1.12-1.82-.48-4.15,1.42-5.22l1.33-.74-.94-.41c-1.36-.58-2.27-1.85-2.35-3.27-.08-1.43.68-2.77,1.97-3.49l8-4.47c1.91-1.06,4.35-.46,5.48,1.35Z"
+                            fill="#f03"></path>
+                        <path d="m10,15l5-3-5-3v6Z" fill="#fff"></path>
+                    </svg>
+                    <span>Shorts</span>
+
+                </div>
+                <div class="shorts-content">
+                    <div class="i-short">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/jg33RKRgHvg/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLBV_uR5rj7jgtcA829Uzr0PKxjWPA">
+                        <div class="words">
+                            <span>💥🤯 Midnight 12:30-கு சரியான SAMBAVAM⁉️</span>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                    <path
+                                        d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="i-short">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/YVwg85b7vZw/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLAFqXdmjkVF2QqrnmkU_eNENImLPw">
+                        <div class="words">
+
+                            <span> iQOO 15 Unboxing</span>
+
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                    <path
+                                        d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="i-short"><img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/YReFK58MDDA/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLA4Y5IQwkeG7V3YyS-hm0OHHzOT_Q">
+
+                        <div class="words">
+                            <span>3 Features Clash of Clans Removed Forever</span>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                    <path
+                                        d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="i-short">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/XQVFTjhVK74/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLAeEhw8qMUfZzW79lfHPF10WQzhCg">
+                        <div class="words">
+                            <span> to push up ✅</span>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                    <path
+                                        d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="i-short">
+                        <img alt=""
+                            class="ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded"
+                            src="https://i.ytimg.com/vi/NqjcDjoIz6U/oar2.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&amp;rs=AOn4CLCvX54C37OQGVu4LYsN1KxKvoSSkg">
+                        <div class="words">
+                            <span> JUPITER 125X gets Auto Ride now!!! #tvs</span>
+                            <button>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+                                    focusable="false" aria-hidden="true"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+                                    <path
+                                        d="M12 4a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Zm0 6a2 2 0 100 4 2 2 0 000-4Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+</body>
+
+</html>
