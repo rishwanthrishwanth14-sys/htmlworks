@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        calculator
+    </title>
+    <style type="text/css">
+        .inner-layout {
+            width: 300px;
+            height: 300px;
+            margin: 0px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            border: solid 1px;
+            background: linear-gradient(28deg, black, transparent);
+        }
+
+        .calculation-box>input {
+            width: 50px;
+            height: 25px;
+        }
+
+        .calculation-symbols {
+            display: flex;
+            gap: 5px;
+        }
+
+        .result-button>button {
+            width: 150px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="inner-layout">
+            <div class="calculation-box">
+                <input type="text" id="number" value="">
+            </div>
+            <div class="calculation-symbols">
+                <button onclick="calc('rt')">Math.sqrt</button>
+                <button onclick="calc('ct')">Math.cqrt</button>
+                <button onclick="calc('nt')">Math.pow</button>
+            </div>
+            <div class="result-button">
+                <input type="text" id="result">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var ndom = document.getElementById("number")
+
+    function calc(op) {
+        var n = parseInt(ndom.value)
+        var result = ''
+        if (op == 'rt') {
+            result = Math.sqrt(n)
+        } else if (op == 'ct') {
+            result = Math.sqrt(n)
+        } else if (op == 'nt') {
+            result = Math.sqrt(n)
+        }
+        document.getElementById("result").value = result
+    }
+</script>
+
+</html>
