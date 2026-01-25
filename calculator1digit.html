@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>singledigitcalculator</title>
+    <style type="text/css">
+        .boxlayout {
+            margin: 0px auto;
+            display: flex;
+            border: 1px solid;
+            width: 300px;
+            height: 300px;
+            align-items: center;
+            flex-direction: column;
+            gap: 52px;
+            background-color: navajowhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="boxlayout">
+            <div class="hedding">
+                Calculator
+            </div>
+            <div class="number1">
+                NUMBER 1 -
+                <span>
+                    <input id="number1" type="number" value="0">
+                </span>
+            </div>
+            <div class="boxes">
+                <button onclick="calc('f')">!</button>
+                <button onclick="calc('a')">+</button>
+                <button onclick="calc('m')">-</button>
+                <button onclick="calc('ml')">*</button>
+                <button onclick="calc('d')">/</button>
+
+            </div>
+
+</body>
+
+</html>

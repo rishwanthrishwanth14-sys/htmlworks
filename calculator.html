@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>calculator</title>
+    <style type="text/css">
+        .boxlayout {
+            margin: 0px auto;
+            display: flex;
+            border: 1px solid;
+            width: 400px;
+            height: 400px;
+            align-items: center;
+            flex-direction: column;
+            gap: 52px;
+            background-color: navajowhite;
+        }
+
+        .number1 {
+            font-size: 26px;
+            font-family: cursive;
+            display: flex;
+        }
+        .number1>span>input{
+            width: 63px;
+        }
+
+        .number1>span {
+            display: flex;
+        }
+
+        .number2 {
+            font-size: 26px;
+            font-family: cursive;
+            display: flex;
+        }
+         .number2>span>input{
+            width: 63px;
+        }
+
+        .number2>span {
+            display: flex;
+        }
+        .hedding{
+            border: 1px solid; 
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="layout">
+        <div class="boxlayout">
+            <div class="hedding">
+                Calculator
+            </div>
+            <dic class="number1">
+                NUMBER 1 -
+                <span>
+                    <input id="number1" type="number" value="0">
+                </span>
+            </dic>
+            <dic class="number2">
+                NUMBER 2 - 
+                <span>
+                    <input id="number2" type="number" value="0">
+                </span>
+            </dic>
+            <div class="boxes">
+                <button onclick="calc('a')">+</button>
+                <button onclick="calc('m')">-</button>
+                <button onclick="calc('ml')">*</button>
+                <button onclick="calc('d')">/</button>
+                <button onclick="calc('re')">%</button>
+                <button onclick="calc('po')">**</button>
+                <button onclick="calc('f')">!</button>
+
+            </div>
+            <div class="resultbox">
+                Result <input type="text" id="resultOutput">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var n1Dom = document.getElementById("number1")
+    var n2Dom = document.getElementById("number2")
+
+    function calc(op) {
+        var n1Value = parseInt(n1Dom.value)
+        var n2Value = parseInt(n2Dom.value)
+        var result = ''
+
+
+        if (op == "a") {
+            result = n1Value + n2Value
+        } else if (op == "m") {
+            result = n1Value - n2Value
+        } else if (op == "ml") {
+            result = n1Value * n2Value
+        } else if (op == "d") {
+            result = n1Value / n2Value
+        } else if (op == 're'){
+            result = n1Value % n2Value
+        } else if (op == 'po'){
+            result = n1Value ** n2Value     
+        } else if (op == 'f'){
+          result = 
+        } else  {
+            result=Error
+        }
+
+        document.getElementById('resultOutput').value = result
+    }
+</script>
+
+</html>
