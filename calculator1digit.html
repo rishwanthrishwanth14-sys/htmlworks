@@ -27,18 +27,46 @@
             <div class="number1">
                 NUMBER 1 -
                 <span>
-                    <input id="number1" type="number" value="0">
+                    <input id="number1" type="number" value="0" >
                 </span>
             </div>
             <div class="boxes">
-                <button onclick="calc('f')">!</button>
-                <button onclick="calc('a')">+</button>
-                <button onclick="calc('m')">-</button>
-                <button onclick="calc('ml')">*</button>
-                <button onclick="calc('d')">/</button>
-
+                <button onclick="calc('mod')">%</button>
+                <button onclick="calc('sque')">x<sup>2</sup></button>
+                <button onclick="calc('squert')">√</button>
+                <button onclick="calc('fact')">!</button>
+                <button onclick="calc('cube')">x<sup>3</sup></button>
             </div>
+            <div class="resultbox">
+                Result <input type="text" id="resultOutput">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var n1Dom = document.getElementById("number1");
+
+        function calc(op) {
+            var n1Value = parseInt(n1Dom.value);
+            var result = "";
+             if (op == "mod") {
+                result = n1Value % 2;
+            } else if (op == "sque") {
+                result = n1Value * n1Value;
+            } else if (op == "squert") {
+                result = Math.sqrt(n1Value);
+            } else if (op == "cube") {
+                result = n1Value * n1Value * n1Value;
+            }else{    
+                result = fact;
+            }
+
+            document.getElementById('resultOutput').value = result;
+        }
+    </script>
+
 
 </body>
+
 
 </html>
