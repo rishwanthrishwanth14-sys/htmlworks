@@ -4,15 +4,29 @@
 <head>
     <title>mark statement</title>
     <style type="text/css">
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
         .boxlayout {
             margin: 0px auto;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             width: 400px;
-            height: 300px;
-            border: solid 1px;
+            height: 340px;
             justify-content: space-between;
+            box-shadow: 0px 3px 10px 0px rgba(31, 31, 31, 0.08);
+            border: none;
+            border-radius: 15px;
+        }
+
+        .layout {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgb(255, 111, 0) rgb(254, 54, 23))
         }
 
         .boxlayout>button {
@@ -38,31 +52,114 @@
             </div>
             <div class="tamil">
                 TAMIL:
-                <span><input type="number"></span>
+                <span><input id="tamil" type="number" min="0" max="100"></span>
             </div>
             <div class="english">
                 ENGLISH:
-                <span><input type="number"></span>
+                <span><input id="english" type="number" min="0" max="100"></span>
             </div>
             <div class="maths">
                 MATHS:
-                <span><input type="number"></span>
+                <span><input id="maths" type="number" min="0" max="100"></span>
             </div>
             <div class="science">
                 SCIENCE:
-                <span><input type="number"></span>
+                <span><input id="science" type="number" min="0" max="100"></span>
             </div>
             <div class="socialsciense">
                 SOCIAL SCIENCE:
-                <span><input type="number"></span>
+                <span><input id="socialscience" type="number" min="0" max="100"></span>
             </div>
-            <button type="submit" onclick="alert ('result')">RESULT</button>
+            <button onclick="subjects()">RESULT</button>
+            <div class="result">
+                <span>result</span>
+                <input type="text" id="result">
+                <br />
+                <span>total</span>
+                <input type="text" id="total">
+                <br />
+                <span>average</span>
+                <input type="text" id="average">
+                <br />
+                <span>highest Mark</span>
+                <input type="text" id="highValue">
+                <br />
+                <span>lowest Mark</span>
+                <input type="text" id="lowvalue">
+                <br />
+                <span>Cut Off</span>
+                <input type="text" id="cutOf">
+
+
+            </div>
         </div>
     </div>
     <script>
-        function subjects(TAMIL,ENGLISH,MATHS,SCIENCE,SOCIALSCIENCE)  {
-            var result =(TAMIL+ENGLISH+MATHS+SCIENCE+SOCIALSCIENCE)
-            var total = (result/5)
+        var taDom = document.getElementById("tamil")
+        var enDom = document.getElementById("english")
+        var maDom = document.getElementById("maths")
+        var scDom = document.getElementById("science")
+        var ssDom = document.getElementById("socialscience")
+
+
+        function subjects() {
+            var taMark = parseInt(taDom.value)
+            var enMark = parseInt(enDom.value)
+            var maMark = parseInt(maDom.value)
+            var scMark = parseInt(scDom.value)
+            var ssMark = parseInt(ssDom.value)
+            result = ''
+            var highValue = taMark
+            if (taMark < enMark) {
+                highValue = enMark
+            }
+
+            if (highValue < maMark) {
+                highValue = maMark
+            }
+
+            if (highValue < scMark) {
+                highValue = scMark
+            }
+
+            if (highValue < ssMark) {
+                highValue = ssMark
+            }
+
+            var cutOf = (maMark + scMark + ssMark ) 
+            var totalMarks = (taMark + enMark + maMark + scMark + ssMark)
+            var average = (totalMarks / 5+'%' )
+
+            var lowvalue = taMark
+            if (taMark > enMark) {
+                lowvalue = enMark
+            }
+            if (lowvalue > maMark) {
+                lowvalue = maMark
+            }
+            if (lowvalue > scMark) {
+                lowvalue = scMark
+            }
+            if (lowvalue > ssMark) {
+                lowvalue = ssMark
+            }
+
+
+            if (taMark >= 35 && enMark >= 35 && maMark >= 35 && scMark >= 35 && ssMark >= 35) {
+                result = "pass"
+            } else {
+                result = "fail"
+            }
+
+            document.getElementById("result").value = result
+            document.getElementById('total').value = totalMarks
+            document.getElementById('average').value = average
+            document.getElementById('highValue').value = highValue
+            document.getElementById('lowvalue').value = lowvalue
+            document.getElementById('cutOf').value = cutOf
+        }
+
+
     </script>
 
 </body>
