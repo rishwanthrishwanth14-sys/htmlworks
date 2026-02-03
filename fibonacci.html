@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>fibonacci</title>
+    <style type="text/css">
+        .result {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="boxlayou">
+            <div class="NUMBER">
+                <input id="N1" type="number" ondblclick="doFibonacci()">
+            </div>
+            <button onclick="doFibonacci()">result</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+    <script>
+        var n1Dom = document.getElementById("N1")
+        var outputDom = document.getElementById("result")
+
+        function doFibonacci() {
+            var totalNumber = parseInt(n1Dom.value)
+            if (isNaN(totalNumber) || totalNumber < 1) {
+                outputDom.innerHTML = 'Number must be greater than 0'
+            } else {
+                var outputArr = fibonacci(totalNumber)
+                var result = "";
+                for (var i = 0; i < outputArr.length; i++) {
+                    result += `<li>${outputArr[i]}</li>`
+                }
+                outputDom.innerHTML = `<ul>${result}</ul>`
+            }
+        }
+
+        function fibonacci(n1Value) {
+            var a = -1
+            var b = 1
+            var result = []
+            for (var i = 0; i < n1Value; i++) {
+                b = a + b;
+                a = b - a;
+                result.push(b)
+            }
+            return result
+        }
+    </script>
+</body>
+
+</html>
