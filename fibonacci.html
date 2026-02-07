@@ -21,11 +21,11 @@
         </div>
     </div>
     <script>
-        var n1Dom = document.getElementById("N1")
+        var a = document.getElementById("N1")
         var outputDom = document.getElementById("result")
 
         function doFibonacci() {
-            var totalNumber = parseInt(n1Dom.value)
+            var totalNumber = parseInt(a.value)
             if (isNaN(totalNumber) || totalNumber < 1) {
                 outputDom.innerHTML = 'Number must be greater than 0'
             } else {

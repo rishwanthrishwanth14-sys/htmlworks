@@ -1,0 +1,409 @@
+<html>
+
+<head>
+    <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px auto;
+            background: radial-gradient(circle, rgba(184, 66, 119, 1) 0%, rgba(148, 187, 233, 1) 100%);
+        }
+
+        h1 {
+            margin: 18px 752px;
+            font-size: 44px;
+
+        }
+
+        form {
+            width: 492px;
+            margin: 4px 540px 130px;
+            display: flex;
+            flex-direction: column;
+            gap: 38px;
+            border: solid 1PX black;
+            padding: 34px;
+            border-bottom: solid 1px black;
+
+        }
+
+        form .Name {
+            display: flex;
+            flex-direction: row;
+            font-size: 24px;
+            gap: 36px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+
+        }
+
+        .Name label {
+            margin-top: 6px;
+        }
+
+        .Name input[type=text] {
+            width: 244px;
+            height: 38px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        form .Age {
+            display: flex;
+            flex-direction: row;
+            font-size: 26px;
+            gap: 40px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+        }
+
+        .Age label {
+            margin-top: 6px;
+            margin-left: 8px;
+        }
+
+        .Age input[type=number] {
+            width: 244px;
+            height: 38px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        form .DOB {
+            font-size: 26px;
+            display: flex;
+            gap: 70px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+
+        }
+
+        .DOB input[type=date] {
+            width: 244px;
+            height: 38px;
+            border-radius: 10px;
+            font-size: 20px;
+            border: none;
+            padding-left: 20px;
+        }
+
+        .DOB label {
+            margin-top: 6px;
+        }
+
+        form .E-mail {
+            font-size: 24px;
+            display: flex;
+            gap: 40px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+
+        }
+
+        .E-mail input[type=text] {
+            width: 244px;
+            height: 38px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+
+        .E-mail label {
+            margin-top: 6px;
+        }
+
+        form .Password {
+            font-size: 24px;
+            display: flex;
+            gap: 28px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+
+        }
+
+        .Password input[type=password] {
+            width: 244px;
+            height: 38px;
+            border-radius: 10px;
+            border: none;
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        form .Gender {
+            font-size: 24px;
+            display: flex;
+            gap: 24px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 26px;
+        }
+
+        .Gender label {
+            font-size: 20px;
+            margin-top: 4px;
+        }
+
+        form .Address {
+            font-size: 24px;
+            display: flex;
+            gap: 40px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 24px;
+
+        }
+
+        .Address textarea {
+            resize: none;
+            border-radius: 10px;
+            height: 100px;
+            width: 244px;
+            padding-left: 20px;
+            font-size: 16px;
+
+        }
+
+        .Address label {
+            margin-top: 30px;
+        }
+
+
+        form .Hobbies {
+            font-size: 24px;
+            display: flex;
+            gap: 30px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+
+        }
+
+        .Hobbies select {
+            height: 42px;
+            width: 244px;
+            border-radius: 10px;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+
+        .Hobbies label {
+            margin-top: 6px;
+        }
+
+        form .Food {
+            font-size: 24px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+
+        }
+
+        .Food label {
+            font-size: 18px;
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            margin-left: 100px;
+            margin-top: 10px;
+        }
+
+        .submit input[type=submit] {
+            width: 100px;
+            height: 35px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-left: 170px;
+        }
+
+        .submit input[type=reset] {
+            width: 100px;
+            height: 35px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        form .color {
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            font-size: 24px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .color input {
+            width: 150px;
+            height: 50px;
+        }
+
+        .color label {
+            margin-top: 10px;
+        }
+
+        form .image {
+            font-size: 24px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            display: flex;
+            gap: 156px;
+        }
+
+        form .range {
+            font-size: 24px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            display: flex;
+            gap: 70px;
+        }
+
+        .range input[type=range] {
+            width: 200px;
+            height: 50px;
+        }
+
+        .range label {
+            margin-top: 10px;
+        }
+
+        form .time {
+            font-size: 26px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            display: flex;
+            gap: 110px;
+        }
+
+
+        form .search {
+            font-size: 26px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            display: flex;
+            gap: 44px;
+        }
+
+        .search input[type=search] {
+            width: 250px;
+            height: 34px;
+            border-radius: 6px;
+            border: none;
+            font-size: 18px;
+            padding-left: 10px;
+        }
+
+        form .file {
+            font-size: 26px;
+            border-bottom: solid 1px lightblue;
+            padding-bottom: 34px;
+            display: flex;
+            gap: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>FORM</h1>
+        <form>
+
+            <div class="Name"><label for="Name">Name : </label><br>
+                <input type="text" id="Name" name="name">
+            </div>
+            <div class="Age"><label>Age :</label><br>
+                <input type="number">
+            </div>
+            <div class="DOB"> <label> D/o/b : </label>
+                <input type="date">
+            </div>
+            <div class="E-mail"><label>E-mail id : </label>
+                <input type=text aria-label="E-mail">
+            </div>
+            <div class="password"><label>Password :</label>
+                <input type="password">
+            </div>
+
+
+
+            <div class="Gender">Gender :
+                <input type="radio" id="male" name="gender">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender">
+                <label for="female">Female</label>
+            </div>
+            <div class="Address"><label>Address:</label>
+                <textarea name="address" id="address" rows="5" column="10"></textarea>
+            </div>
+            <div class="Hobbies"><label for="Hobbies"> Hobbies :</label>
+                <select multiple>
+                    <option>Drawing</option>
+                    <option>Reading</option>
+                    <option>Playing games</option>
+                    <option>Listening music</option>
+                    <option>Singing</option>
+                </select>
+            </div>
+            <div class="Food">Food : select any two
+                <div class="list"><label><input type="checkbox" id="food 1" name="food 1[]">Chicken-biriyani</label>
+                    <label><input type="checkbox" id="" name="food 2[]">Mutton-biriyani</label>
+                    <label><input type="checkbox" id="food 3" name="food 3[]">Noodles</label>
+                    <label><input type="checkbox" id="food 4" name="food 4[]">Pasta</label>
+                </div>
+            </div>
+            <div class="color"><label for=color>Favorite Color :</label>
+                <input type="color" id="color" value="#ad08ff">
+            </div>
+            <div class="image"><label>Image :</label>
+                <input type="image" src="c:\Users\HP\Downloads\emoji.jpg" alt="img" height="40px" width="40px">
+            </div>
+            <div class="range"><label>Range :</label>
+                <input type="range" id="vol" name="vol" min="0" max="50">
+            </div>
+            <div class="time">
+                <label>Time :</label>
+                <input type="time" id="appt" name="appt">
+            </div>
+            <div class="search">
+                <label>Search : </label>
+                <input type="search" id="gsearch" name="gsearch">
+            </div>
+            <div class="file">
+                <label>Select File :</label>
+                <input type="file" id="myfile" name="myfile">
+                <input type="hidden" id="custId" name="custId" value="3487">
+            </div>
+
+            <div class="submit">
+                <input type="submit" value="submit">
+                <input type="reset" value="Reset">
+
+            </div>
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+
+</html>
