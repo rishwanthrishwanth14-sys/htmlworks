@@ -141,19 +141,27 @@
                 Favoritefood.push(item.value)
             }
             })
+            var color =document.getElementById('color').value;
+            var range = document.getElementById('vol').value;
+            var time = document.getElementById('time').value;
+            var search = document.getElementById('search').value;
 
 
-           finalResult += `name:     ${userName}`
-           finalResult += ` age:     ${userAge}`
-           finalResult += `D/O/B:    ${DOB}`
-           finalResult += `Email:    ${useremail}`
-           finalResult += `password: ${userpassword}`
-           finalResult += `Gender: ${endUserGender}`
-           finalResult += `Address: ${Address}`
-           finalResult += `Hobbies: ${Hobbies}`
-           finalResult += `Favoritefood: ${Favoritefood}`
+           finalResult += `name:     ${userName} <hr />` 
+           finalResult += ` age:     ${userAge} <hr />`
+           finalResult += `D/O/B:    ${DOB} <hr />`
+           finalResult += `Email:    ${useremail} <hr />`
+           finalResult += `password: ${userpassword} <hr />`
+           finalResult += `Gender: ${endUserGender} <hr />`
+           finalResult += `Address: ${Address} <hr />`
+           finalResult += `Hobbies: ${Hobbies} <hr />`
+           finalResult += `Favoritefood: ${Favoritefood} <hr />`
+           finalResult += `color : ${color} <hr />`
+           finalResult += `range : ${range} <hr />`
+           finalResult += `Time : ${time} <hr />`
+           finalResult += `search : ${search} <hr />`
 
-           document.getElementById('result').innerText = finalResult
+           document.getElementById('result').innerHTML = finalResult
 
         }
     </script>
