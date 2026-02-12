@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>bio data form</title>
+    <title>Form sheet</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -22,6 +22,7 @@
             font-size: 38px;
         }
 
+
         form {
             width: 290px;
             margin: 4px 540px 130px;
@@ -33,13 +34,67 @@
             border-bottom: solid 1px black;
         }
 
-        form > .Favorite-food > .list {
+        form>.Favorite-food>.list {
             display: flex;
             flex-direction: column;
         }
+
         .Hobbies select option {
-             width: 120px;
-             height: 40px;
+            width: 120px;
+            height: 40px;
+        }
+
+        .style1 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+
+        .style2 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+        .style3 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+        .style4 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+
+        .style5 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+
+        .style6 {
+            width: 200px;
+            height: 20px;
+            border-radius: 5px;
+            border: solid 2px black;
+            outline: none;
+        }
+
+
+        .error,
+        .error:focus {
+            border: solid 2px red;
+            padding: 5px;
         }
     </style>
 </head>
@@ -50,118 +105,242 @@
         <h1>FORM</h1>
         <form>
             <div class="name"><label for="name">Name : </label>
-                <input type="text" id="name" name="name" value=" ">
+                <input type="text" id="name" class="style1" name="name" value="">
             </div>
             <div class="Age"><label for="age">Age : </label>
-                <input type="number" id="age" name="age" value=" ">
+                <input type="number" id="age" class="style2" value="">
             </div>
             <div class="DOB"><label for="DOB">D/O/B</label>
-                <input type="date" id="DOB" name="D/O/B" value=" ">
+                <input type="date" id="DOB" class="style3" value="">
             </div>
             <div class="Email"><label for="Email">Email</label>
-                <input type="text" id="Email" name="Email" value=" ">
+                <input type="text" id="Email" class="style4" name="Email" value="">
             </div>
             <div class="password"><label for="password">Password</label>
-                <input type="password" id="password" name="password" value=" ">
+                <input type="password" id="password" class="style5" name="password" value="">
             </div>
 
-            <div class="gender">Gender :
+            <div class="gender" id="genderContainer">Gender :
 
-                <input type="radio" id="male" name="gender" value="male" ></label>
+                <input type="radio" id="male" name="gender" value="male"></label>
                 <label for="male">Male</label>
 
                 <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Female</label>
             </div>
 
-            <div class="Address"><label for="Address">Address : </label>
-                <textarea id="Address" name="Address" rows="3" column="5"></textarea>
+            <div class="Address" ><label for="Address">Address : </label>
+                <textarea id="address" name="Address" class="style6" rows="3" column="5"></textarea>
             </div>
             <div class="Hobbies"><label for="Hobbies">Hobbies : </label>
-                <select id="hobb">
-                    <option>playing games</option>
-                    <option>watching TV</option>
-                    <option>reeding books</option>
-                    <option>watching series</option>
+                <select id="hobbi">
+                    <option value=""></option>
+                    <option value="playing games">playing games</option>
+                    <option value="watching TV">watching TV</option>
+                    <option value="reading books">reading books</option>
+                    <option value="watching series">watching series</option>
                 </select>
             </div>
-            <div class="Favorite-food">Favorite food : any two
+            
+            <div class="Favorite-food" id="foodContainer">Favorite food : any two
                 <div class="list">
-                    <label><input type="checkbox"  name="food" value="chappathi">chappathi</label>
-                    <label><input type="checkbox"  name="food" value="parato">parota</label>
-                    <label><input type="checkbox"  name="food" value="chicken">chicken rice</label>
-                    <label><input type="checkbox"  name="food" value="egg rice">egg rice</label>
+                    <label><input type="checkbox" name="food" value="chappathi">chappathi</label>
+                    <label><input type="checkbox" name="food" value="parato">parota</label>
+                    <label><input type="checkbox" name="food" value="chicken">chicken rice</label>
+                    <label><input type="checkbox" name="food" value="egg rice">egg rice</label>
                 </div>
             </div>
-            <div class="color"><label for="color">Favorite color :</label>
-                <input type="color" id="color" value="white">
+            <div class="color" id="colorcontainer"><label for="color">Favorite color :</label>
+                <input type="color" id="color" value="#rrggbb">
             </div>
-            <div class="range"><label for="range">Range :</label>
-                <input type="range" id="vol" name="vol" min="0" max="50">
+            <div class="range"><label for="range" id="rangecontainer">Range :</label>
+                <input type="range" id="vol" name="vol" min="0" max="500" value="0">
             </div>
-            <div class="time"><label for="time">Time :</label>
-                <input type="time" id="time" name="time">
-            </div>
-            <div class="search"><label for="search">Search</label>
-                <input type="text" id="search" name="search">
-            </div>
+                <div class="time"><label for="time">Time :</label>
+                    <input type="time" id="time" name="time">
+                </div>
+                <div class="search"><label for="search">Search</label>
+                    <input type="text" id="search" name="search">
+                </div>
             <div class="submit">
                 <input type="button" value="submit" onclick="submitResult()">
                 <input type="button" value="reset">
             </div>
-            <div class="result"  id="result"></div>
+            <div class="result" id="result"></div>
         </form>
-
-
-
-
     </div>
-    <script>
-        function submitResult() {
-            var finalResult = "";
 
-           var userName = document.getElementById("name").value;
-           var userAge = document.getElementById("age").value;
-           var DOB = document.getElementById("DOB").value;
-           var useremail = document.getElementById("Email").value;
-           var userpassword= document.getElementById("password").value;
-           var endUserGender =  document.querySelector('input[name="gender"]:checked')?.value || ''
+
+
+    <script>
+
         //    if (document.querySelector('input[name="gender"]:checked')) {
         //     endUserGender = document.querySelector('input[name="gender"]:checked').value;
         //    }
 
         // var endUserGender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : ''
 
-           var Address = document.getElementById('Address').value;
-           var Hobbies = document.querySelector('#hobb').value;
-
-           var Favoritefood = []
-            document.querySelectorAll('[name=food]').forEach(function (item){
-            if(item.checked) {
-                Favoritefood.push(item.value)
-            }
+        var nameDom = document.getElementById("name")
+        var ageDom = document.getElementById("age")
+        var DOBDom = document.getElementById("DOB")
+        var emailDom = document.getElementById("Email")
+        var passDom = document.getElementById('password')
+        var addressDom = document.getElementById('address')
+        var hobbiDom = document.querySelector('#hobbi')
+        var colorDom = document.getElementById('color')
+        var rangeDom = document.getElementById('vol')       
+        var timeDom = document.getElementById('time')
+        var searchDom = document.getElementById('search')
+        var genderContainer = document.getElementById('genderContainer')
+        var colorcontainer = document.getElementById('colorcontainer')
+        var rangecontainer = document.getElementById('rangecontainer')
+        var FavoritefoodDom =  []
+            document.querySelectorAll('[name=food]').forEach(function (item) {
+                if (item.checked) {
+                    Favoritefood.push(item.value)
+                }
             })
-            var color =document.getElementById('color').value;
-            var range = document.getElementById('vol').value;
-            var time = document.getElementById('time').value;
-            var search = document.getElementById('search').value;
+
+        function submitResult() {
+            var finalResult = "";
+
+            var genderDom = document.querySelector('input[name="gender"]:checked')
+
+            var userName = nameDom.value;
+            var userAge = ageDom.value;
+            var DOB = DOBDom.value;
+            var useremail = emailDom.value;
+            var userpassword = passDom.value;
+            var endUserGender = genderDom?.value || ''
+            var Address = addressDom.value;
+            var Hobbies = hobbiDom.value;
+            var Favoritefood = []
+            document.querySelectorAll('[name=food]').forEach(function (item) {
+                if (item.checked) {
+                    Favoritefood.push(item.value)
+                }
+            })
+
+            var color = colorDom.value;
+            var range = rangeDom.value;
+            var time = timeDom.value;
+            var search = searchDom.value;
+
+            var isFormHasAnyError = false
+
+            if (userName === '') {
+                nameDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                nameDom.classList.remove('error')
+            }
+
+            if (userAge === '') {
+                ageDom.classList.add('error')
+
+                isFormHasAnyError = true
+            } else {
+                ageDom.classList.remove('error')
+            }
+
+            if (DOB === '') {
+                DOBDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                DOBDom.classList.remove('error')
+            }
+
+            if (useremail === '') {
+                emailDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                emailDom.classList.remove('error')
+            }
+
+            if (userpassword === '') {
+                passDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                passDom.classList.remove('error')   
+            }
+
+            if (!endUserGender === '') {
+                !genderContainer.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                !genderContainer.classList.remove('error')
+            }
+
+            if (Address === '') {
+                addressDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                addressDom.classList.remove('error')
+            }
+
+            if (Hobbies === '') {
+                hobbiDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                hobbiDom.classList.remove('error')
+            }
+
+            if (Favoritefood.length === 0 ){
+                foodContainer.classList.add('error')
+            } else {
+                foodContainer.classList.remove('error')
+            }
+
+            if (color === '') {
+                colorcontainer?.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                colorcontainer?.classList.remove('error')
+            }
+
+            if (range === '') {
+                rangeDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                rangeDom.classList.remove('error')
+            }
+
+            if (time === '') {
+                timeDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                timeDom.classList.remove('error')
+            }
+
+            if (search === '') {
+                searchDom.classList.add('error')
+                isFormHasAnyError = true
+            } else {
+                searchDom.classList.remove('error')
+            }
+
+            if (isFormHasAnyError) {
+                document.getElementById('result').innerHTML = "Some fields not filled"
+                return
+            }
 
 
-           finalResult += `name:     ${userName} <hr />` 
-           finalResult += ` age:     ${userAge} <hr />`
-           finalResult += `D/O/B:    ${DOB} <hr />`
-           finalResult += `Email:    ${useremail} <hr />`
-           finalResult += `password: ${userpassword} <hr />`
-           finalResult += `Gender: ${endUserGender} <hr />`
-           finalResult += `Address: ${Address} <hr />`
-           finalResult += `Hobbies: ${Hobbies} <hr />`
-           finalResult += `Favoritefood: ${Favoritefood} <hr />`
-           finalResult += `color : ${color} <hr />`
-           finalResult += `range : ${range} <hr />`
-           finalResult += `Time : ${time} <hr />`
-           finalResult += `search : ${search} <hr />`
+            finalResult += `name:     ${userName} <hr />`
+            finalResult += ` age:     ${userAge} <hr />`
+            finalResult += `D/O/B:    ${DOB} <hr />`
+            finalResult += `Email:    ${useremail} <hr />`
+            finalResult += `password: ${userpassword} <hr />`
+            finalResult += `Gender: ${endUserGender} <hr />`
+            finalResult += `Address: ${Address} <hr />`
+            finalResult += `Hobbies: ${Hobbies} <hr />`
+            finalResult += `Favoritefood: ${Favoritefood} <hr />`
+            finalResult += `color : ${color} <hr />`
+            finalResult += `range : ${range} <hr />`
+            finalResult += `Time : ${time} <hr />`
+            finalResult += `search : ${search} <hr />`
 
-           document.getElementById('result').innerHTML = finalResult
+            document.getElementById('result').innerHTML = finalResult
+
 
         }
     </script>
